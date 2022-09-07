@@ -1,11 +1,58 @@
 #   NeoFloppy
-Specification
+###  Specification
+####  Version 0.1
+#### NOTE: This is a "work in progress" draft and NOT a final specification!
+Fundamental things may be changed without prior notice!
 
-Version 0.1
+
 
 ## Goal
 The NeoFloppy aims to be a modern removeable media format & standard taking lessions learned from the 1st 3,5" FDD up to present-day SSDs & [NV-]RAM media and developing an easy to handle and use media format.
-### Media Types
+
+It is intended to be an open standard that is both mutli-vendor & multi-provider, allowing for an equally diverse ecosystem as the original 3,5" FDD in the mid-90s.
+
+
+###  Why another media type?
+Why is an important question and we want to answer it:
+
+####  Longevity
+All common external media either suffer from certain issues:
+- being extremely delicate on their own [i.e. blu-ray disks]
+- having a limited numer of connection cycles as per interface [i.e. 2,5" SSDs]
+- being a mechanical hazard being being able to break off their connectors and/or destroying the ports connected to if not damage the entire machine the port belongs to [i.e. USB flashdrives].
+- Conventional Harddrives are mechanically fragile and susceptible to damages due to user error, "gravity" magnetic fields, etc.
+  - It is evident that the [67 year old technology of HDDs](https://en.wikipedia.org/wiki/Hard_disk_drive) cannot long-term compete in terms of capacity growth and storage pricing with SSDs as already the technological limits are being reached using all tricks in the book like [SMR](https://en.wikipedia.org/wiki/Shingled_magnetic_recording) and using [Helium](https://en.wikipedia.org/wiki/Helium#Conservation_advocates) for cooling, which is a very finite resource.
+  - Hard drives already are way too power consuming for more and more applications and thus will likely go the way of [QIC Tapes](https://en.wikipedia.org/wiki/Quarter-inch_cartridge) as their shortcomings make them more and more unjustifyable for mass-market use by [SOHO](https://en.wikipedia.org/wiki/Small_office/home_office) customers.
+
+####  Handling
+All common external media have serious handing deficits stemming from lack of standardization.
+- USB flashdrives - as small and handy as they are - lack any good way to label them.
+  - This often enough results in users fumbling around with drives, espechally when they have a large quantity of equally-looking ones. 
+    - Flashdrives never were "designed" with handeability, accessibility or useability in mind. So essential Quality-of-Life features common on other media from 8" FDDs to BD-RWs like labelling or even a good way to store them efficiently was never the focus of it.
+- With the notable exception of [LTO Ultrium](https://en.wikipedia.org/wiki/Linear_Tape-Open#Mechanisms) most modern media do not account for automated "Media Libraries" including [Autoloaders](https://en.wikipedia.org/wiki/Tape_library#Autoloaders) and the need to store and archive a bigger quantity of media and automatically retrieve them.
+
+The [3,5" FDD did these things quite well](https://youtu.be/tJCMzdzh4Tw?t=95), but the used technology is hopelessly outdated in [the age of legitimate 1 TB microSD cards](https://www.ign.com/articles/the-best-1tb-microsd-cards).
+
+
+###  Why the 3,5" FDD form factor?
+OFC it would be trivial to find even smaller form factors like [EDSFF](https://en.wikipedia.org/wiki/Enterprise_%26_Data_Center_SSD_Form_Factor), [M.2](https://en.wikipedia.org/wiki/M.2) & [ExpressCard/34](https://en.wikipedia.org/wiki/ExpressCard) but certain key points come to mind:
+- Some smaller form factors may be subject to licensing fees and not be an open standard.
+  - This is the case with basically almost all media on the market as of today that ain't so old that any patents have long lapsed.
+    - The 3,5" FDD form factor certainly is one of those legacy formats.
+- The form factor has several key advantages as stated before, and aside from [Fuzzy Warm Retro Feelings](https://www.youtube.com/watch?v=8IZcP0oP0OU), conversions of 3,5" media and drives using [SD Cards](https://en.wikipedia.org/wiki/SD_card) are [common](https://www.youtube.com/watch?v=gNQYbSWBhAs) and [well-documented](https://www.youtube.com/watch?v=GOdIeka3-SI).
+  - Sadly these are usually hand-fitted and not interchangeable in any way or form.
+  - Also The SD Interface doesn't lend itself for use-cases replacing SSDs so [SD Express](https://en.wikipedia.org/wiki/SD_card#SD_Express) basically implements [NVMe](https://en.wikipedia.org/wiki/NVM_Express) and thus [PCIe](https://en.wikipedia.org/wiki/PCI_Express).
+    - So one might just instead setup a media format using said interfaces directly.
+- Modern, high-speed & high density flash media can become [very toasty](https://www.youtube.com/watch?v=lQmI5A27Iv8), resulting in a lower lifespan.
+  - The 3,5" form factor provides ample of surface area to allow for sufficient passive cooling [like metal-encased 2,5" SSDs] whilst not contributing to excessive device "thiccness".
+- Existing tooling, standards and a known form factor make tooling up for such a media format relatively easy.
+
+In short, the 3,5" form factor has a lot of desireable features for a removeable media, like being pretty much ["idiot-proof"](https://youtu.be/tJCMzdzh4Tw?t=149), acknowledging the [shortcomings of 5,25" FDDs](https://youtu.be/tJCMzdzh4Tw?t=228) and impoving upon them.
+
+The [core advantages of the 3,5" FDDs](https://youtu.be/tJCMzdzh4Tw?t=254) are therefore taken and remixed into a new and better media format.
+
+
+## Media Types
 The following Types of NeoFloppy are specified:
 - [WORM](https://en.wikipedia.org/wiki/Write_once_read_many)
   - Specifically for append-only archival media.
@@ -18,10 +65,6 @@ The following Types of NeoFloppy are specified:
   - A subsequent "cleaning drive" to clean media is also planned, tho unless physical damage has been exerted onto the media, it should be easily cleanable with 99% isopropylic alcohol and a non-static & fine-tipped sponge-swab.
     - Rare cases of severly gunked-up disks and/or drives will like "Kontakt Chemie LR PCC" or similar Printed Circuit Board Cleaner if not ultrasonic cleaning.
   - The need for any cleaning should be negligible [1x each 5-10 years] per drives and non-zero for media given they get handled properly as per manufacturer specification.
-### Why another media type?
-#### Longevity
-All common external media either suffer from being extremely delicate on their own [i.e. blu-ray disks], having a limited numer of connection cycles as per interface [i.e. 2,5" SSDs] or havr accute mechanical hazard of breaking off their connectors and/or destroying the ports connected to if not the entire machine the port belongs to [i.e. USB flashdrives].
-
 
 ##  Mechanical Dimensions
 ###    Media
@@ -49,6 +92,8 @@ This is divided up by the following parameters:
 -   2x 0,5mm = 1mm metal Casing.
     - 0,5mm on top and 0,5mm on bottom
 - 2x 0,05mm = 0,1mm labels 
+  - it is recommended to use one consistent "over the corner" label!
+    - This allows for easy integration of the "rear label" which is the 1D-Barcode with the unique serial number and manufacturer prefix.
   - Top label: includes rewriteable NFC Tag [13,56 MHz - i.e. using NTAG215]
     - Designed for media identification
       - Can be re-labeled within the drive [optional]
@@ -121,8 +166,128 @@ Utilizing the benefits of the 3,5" FDD mechanical form factor - including the sh
 - Instead of a read/write head that moves along a classic floppy media, the head consists of an LGA "Socket" that only moves vertically to [dis-]connect electrically.
 - Unlike SATA, SAS, U.2 and other internal drive connectors, this is intended to last > 10.000 cycles.
 
-The "Head Window" dimensions are 23,8 x 8,8mm.
+### Head Window
+The Head Window is the name for the contact area protected by the shutter .
+- It's dimensions are 23,8 x 8,8mm, which is in line with the 3,5" FDD's Window as per ECMA-125.
 
+### Contact Area
+In the middle of the Head Window, the contact window of 1mm spaced LGA pads in a 8x23 pin raster, providing a total of 184 pins for contact.
+
+####  Pinout
+The Pinout is from top front as of direction of insertion to the rear
+
+PIN| 0           | 1         | 2         | 3               | 4               | 5              | 6               | 7
+---|-------------|-----------|-----------|-----------------|-----------------|----------------|-----------------|---
+A  | PRSNT#0     | GND       | 5V        | 5V              | 3,3V            | 3,3V           | GND             | PRSNT#1
+B  | USB_VBUS_5V | USB2_D-   | USB2_D+   | USB3_StdA_SSRX- | USB3_StdA_SSRX+ | USB3_GND_DRAIN | USB3_StdA_SSTX- | USB3_StdA_SSTX+ 
+C  | SD_CD/DAT3  | SD_CMD    | SD_VSS1   | SD_VDD          | SD_CLK          | SD_VSS2        | SATA_B+         | WRITE_ENABLE
+D  | SD_DAT0     | SD_DAT1   | SD_DAT2   | SATA_GND        | SATA_A+         | SATA_A-        | SATA_B-         | WRITE_PROTECT
+E  | PCIe_GND    | PCIe_GND  | PCIe_GND  | PCIe_RESET#     | PCIe_GND        | PCIe_GND       | PCIe_GND        | READ_ENABLE
+F  | PCIe_GND    | PCIe0_TX+ | PCIe0_TX- | PCIe_GND        | PCIe0_RX+       | CIe0_RX-       | PCIe_GND        | CFG_#0
+G  | PCIe_GND    | PCIe_GND  | PCIe_GND  | PCIe_WAKE#      | PCIe_GND        | PCIe_GND       | PCIe_GND        | CFG_#1
+H  | PCIe_GND    | PCIe1_RX- | PCIe1_RX+ | PCIe_GND        | PCIe1_TX-       | PCIe1_TX+      | PCIe_GND        | CFG_#2
+I  | PCIe_GND    | PCIe_GND  | PCIe_GND  | PCIe_REFCLKN    | PCIe_GND        | PCIe_GND       | PCIe_GND        | CFG_#3
+J  | PCIe_GND    | PCIe2_TX- | PCIe2_TX+ | PCIe_GND        | PCIe2_RX-       | PCIe2_RX+      | PCIe_GND        | CFG_#4
+K  | PCIe_GND    | PCIe_GND  | PCIe_GND  | PCIe_REFCLKP    | PCIe_GND        | PCIe_GND       | PCIe_GND        | CFG_#5
+L  | PCIe_GND    | PCIe3_RX- | PCIe3_RX+ | PCIe_GND        | PCIe3_TX-       | PCIe3_TX+      | PCIe_GND        | CFG_#6
+M  | PCIe_GND    | PCIe_GND  | PCIe_GND  | SYSCLK#         | PCIe_GND        | PCIe_GND       | PCIe_GND        | CFG_#7
+N  | PCIe_GND    | PCIe4_TX- | PCIe4_TX+ | PCIe_GND        | PCIe4_RX-       | PCIe4_RX+      | PCIe_GND        | CFG_#8
+O  | PCIe_GND    | PCIe_GND  | PCIe_GND  | PRSNT_#2        | PCIe_GND        | PCIe_GND       | PCIe_GND        | WRITE_STOP
+P  | PCIe_GND    | PCIe5_RX- | PCIe5_RX+ | PCIe_GND        | PCIe5_TX-       | PCIe5_TX+      | PCIe_GND        | WRITE_COMPLETE
+Q  | PCIe_GND    | PCIe_GND  | PCIe_GND  | PRSNT_#2        | PCIe_GND        | PCIe_GND       | PCIe_GND        | EJECT_READY
+S  | PCIe_GND    | PCIe6_TX- | PCIe6_TX+ | PCIe_GND        | PCIe6_RX-       | PCIe6_RX+      | PCIe_GND        | EJECT_REQUEST
+T  | PCIe_GND    | PCIe_GND  | PCIe_GND  | PRSNT_#3        | PCIe_GND        | PCIe_GND       | PCIe_GND        | READ_STOP
+U  | PCIe_GND    | PCIe7_RX- | PCIe7_RX+ | PCIe_GND        | PCIe7_TX-       | PCIe7_TX+      | PCIe_GND        | MEDIA_READY
+V  | PCIe_GND    | PCIe_GND  | PCIe_GND  | PCIE_WAKE#      | PCIe_GND        | PCIe_GND       | PCIe_GND        | VOLTAILE_ENABLE
+W  | PRSNT#1     | GND       | 3,3V      | GND             | 1,8V            | GND            | PRSNT#3         | PRSNT#0
+
+##### Glossary
+- PRSNT# is the media presence detection. Those pins pairs just connect through to each [PRSNT#X-PRSNT#X] to enshure proper alignment of the mead.
+- USB_ stands for the Pins as per "USB 3.1 Gen 2" for a maximum of 10Gbit/s transfer speed.
+- SD_ Stands for the Pins as per 
+- PCIeX_YYz stands for PCIe Lane X [0-7], Direction YY [RX/TX], Polarity [+/-].
+- PCIE_ stands for auxilliary PCIe signals, like PCIe_GND is the shielding ground for PCIe signals.
+
+###### Status Pins
+All Status pins use 0-2V for low and 2,7-5,5V for high
+
+Read- & Writeability:
+- READ_ENABLE [RE], WRITE_ENABLE [WE], WRITE_PROTECT [WP] & VOLTAILE_ENABLE [VE] define cartridge parameters
+
+RE | WE | WP | VE | Media Type  | Comment
+---|----|----|----|-------------|---
+0  | 0  | 1  | 1  | Cleaning    | Cleaning Cartridge - Distingushable from ROM Cartridges                            
+1  | 0  | 1  | 0  | ROM         | Can only be read                                                                   
+1  | 1  | 0  | 0  | Rewriteable | Can be accessed like any other rewriteable media                                   
+0  | 1  | 0  | 0  | WOM         | Write-Only memory [WORM media that are configured to be write-only]                
+0  | 0  | 0  | 0  | media error | to be interpreted as either faulty media or if PRSNT#x fail as "media not present" 
+1  | 1  | 0  | 1  | RAM         | RAM-based/voltaile media
+1  | 0  | 1  | 1  | VROM        | RAM-based ROM Media [i.e. VWORM or similar media]
+0  | 1  | 0  | 1  | VWOM        | RAM-Based WOM [WORM media that are configured to be write-only]  
+
+RAM-based / voltaile media can employ a battery backup.
+- In that case, they've to make said battery tool-free removeable and add a switch at the rear to allow for wiping the contents by disconnecting the battery circuit.
+  - a rechargeable R616 cell is recommended, tho the individual implementation is up to the manufacturer.
+- RAM Media that don't have any backup battery must state so clearly on the packaging.
+  - The battery lifetime and shelf-life as well as instructions on how to replace and - if applicable - recharge the battery must be included in the datasheet of the media.
+
+Media Status:
+
+These Statuses indicate various statusses to be interpreted by the drive / media
+
+Status         | Set by | Comment
+---------------|--------|---
+EJECT_REQUEST  | Host   | Media should prepare for graceful dismount and eject.
+EJECT_READY    | Media  | The Media can now be safely ejected.
+MEDIA_READY    | Media  | Media is uninitialized / idle in the drive.
+READ_STOP      | Host   | Abort all access operations of the drive.
+WRITE_STOP     | Media  | Writing to the media should be stopped.
+WRITE_COMPLETE | Media  | All Data has been written to the medium.
+
+Insertion Sequence:
+1. Media is placed in the drive
+2. Drive detects PRSNT#-Pins are connected
+3. Media reports MEDIA_READY
+4. Drive checks configuration and enable pins and selects one of the available interfaces.
+5. Regular Drive Access
+
+Ejection Sequence:
+1. Host / Drive sends EJECT_REQUEST to Media
+2. Media replies with WRITE_STOP [even on read-only media]
+3. Host confirms with READ_STOP [even on write-only media]
+4. Media confirms all actions complete with WRITE_COMPLETE [even on read-only media]
+5. Once dismounted by the host, media confirms with EJECT_READY.
+6. The host can then safely eject the media.
+7. If a media is not ejected, it will remain in MEDIA_READY and can be initialzed again by the Host.
+
+###### Configuration Pins
+Pins 0-7 are configureable
+- Pin 0: Active Media [Only low on Testing Cartridges]
+- Pin 1: Useable Media [Only low on Cleaning cartridges]
+- Pin 2: USB Interface Supported [only low on cleaning Cartridges]
+- Pin 3: SD Interface Supported [only low on media that explicitly don't!]
+- PIN 4: SATA Interface Supported [only low on media that explicitly don't!]
+- PIN 5-7: PCIe Interface Supported [only low on media that explicitly don't!]
+- PIN 8: WORM Media [must be explicitly designated as such]
+
+#5 | #6 | #7 | Lanes
+---|----|----|---
+ 1 | 0  | 0  | 1
+ 1 | 1  | 0  | 2
+ 1 | 0  | 1  | 4
+ 1 | 1  | 1  | 8
+
+NOTE:
+- Not every drive and media supports all interfaces.
+  - The minimum viable media supports USB 3.1 Gen 2 only, tho such media is disrecommended.
+- It is recommended to support as many interface types as possible.
+  - Implementation Freedom was given with the intent to allow for both cheap & low-bandwith as well as performance-oriented media.
+    - SD for low-power embedded devices that may not support [booting from] USB.
+    - USB as common denominator and for affordable mass-market external drives that allow for convenience.
+    - SATA for portable bootable setups and easy archivability of a full system, espechally when setup of such a system may be tideous and/or time-consuming beyond reason.
+    - PCIe for high performance use cases.
+- RFID & NFC Tags should be read by every drive.
+  - NFC Tag Writeability and Barcode / QR-Code readability is optional, tho also recommended - espechally for media libraries.
 
 
 ##  Software & Data Layout
