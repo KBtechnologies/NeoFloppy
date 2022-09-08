@@ -1,9 +1,11 @@
 #   NeoFloppy
 ###  Specification
 ####  Version 0.1
-#### NOTE: This is a "work in progress" draft and NOT a final specification!
-Fundamental things may be changed without prior notice!
+###### NOTE: This is a "work in progress" draft and NOT a final specification!
+###### Fundamental things may be changed without prior notice!
+This specification is open for development and request for comment.
 
+Comment and Suggestions are recommended to be submitted as issues.
 
 
 ## Goal
@@ -18,7 +20,7 @@ Why is an important question and we want to answer it:
 ####  Longevity
 All common external media either suffer from certain issues:
 - being extremely delicate on their own [i.e. blu-ray disks]
-- having a limited numer of connection cycles as per interface [i.e. 2,5" SSDs]
+- having a very limited numer of connection cycles as per interface [i.e. 2,5" SSDs]
 - being a mechanical hazard being being able to break off their connectors and/or destroying the ports connected to if not damage the entire machine the port belongs to [i.e. USB flashdrives].
 - Conventional Harddrives are mechanically fragile and susceptible to damages due to user error, "gravity" magnetic fields, etc.
   - It is evident that the [67 year old technology of HDDs](https://en.wikipedia.org/wiki/Hard_disk_drive) cannot long-term compete in terms of capacity growth and storage pricing with SSDs as already the technological limits are being reached using all tricks in the book like [SMR](https://en.wikipedia.org/wiki/Shingled_magnetic_recording) and using [Helium](https://en.wikipedia.org/wiki/Helium#Conservation_advocates) for cooling, which is a very finite resource.
@@ -28,7 +30,7 @@ All common external media either suffer from certain issues:
 All common external media have serious handing deficits stemming from lack of standardization.
 - USB flashdrives - as small and handy as they are - lack any good way to label them.
   - This often enough results in users fumbling around with drives, espechally when they have a large quantity of equally-looking ones. 
-    - Flashdrives never were "designed" with handeability, accessibility or useability in mind. So essential Quality-of-Life features common on other media from 8" FDDs to BD-RWs like labelling or even a good way to store them efficiently was never the focus of it.
+    - Flashdrives never were "designed" with handeability, accessibility or useability in mind. So essential Quality-of-Life features common on other media from 8" FDDs to BD-RWs like labelling or even a good way to store them efficiently was never the focus for them.
 - With the notable exception of [LTO Ultrium](https://en.wikipedia.org/wiki/Linear_Tape-Open#Mechanisms) most modern media do not account for automated "Media Libraries" including [Autoloaders](https://en.wikipedia.org/wiki/Tape_library#Autoloaders) and the need to store and archive a bigger quantity of media and automatically retrieve them.
 
 The [3,5" FDD did these things quite well](https://youtu.be/tJCMzdzh4Tw?t=95), but the used technology is hopelessly outdated in [the age of legitimate 1 TB microSD cards](https://www.ign.com/articles/the-best-1tb-microsd-cards).
@@ -42,10 +44,11 @@ OFC it would be trivial to find even smaller form factors like [EDSFF](https://e
 - The form factor has several key advantages as stated before, and aside from [Fuzzy Warm Retro Feelings](https://www.youtube.com/watch?v=8IZcP0oP0OU), conversions of 3,5" media and drives using [SD Cards](https://en.wikipedia.org/wiki/SD_card) are [common](https://www.youtube.com/watch?v=gNQYbSWBhAs) and [well-documented](https://www.youtube.com/watch?v=GOdIeka3-SI).
   - Sadly these are usually hand-fitted and not interchangeable in any way or form.
   - Also The SD Interface doesn't lend itself for use-cases replacing SSDs so [SD Express](https://en.wikipedia.org/wiki/SD_card#SD_Express) basically implements [NVMe](https://en.wikipedia.org/wiki/NVM_Express) and thus [PCIe](https://en.wikipedia.org/wiki/PCI_Express).
-    - So one might just instead setup a media format using said interfaces directly.
+    - Native PCIe support might be more useful.
 - Modern, high-speed & high density flash media can become [very toasty](https://www.youtube.com/watch?v=lQmI5A27Iv8), resulting in a lower lifespan.
   - The 3,5" form factor provides ample of surface area to allow for sufficient passive cooling [like metal-encased 2,5" SSDs] whilst not contributing to excessive device "thiccness".
 - Existing tooling, standards and a known form factor make tooling up for such a media format relatively easy.
+  - Even additional casings like a [Jewelcase](https://memorypack.com.tw/floppy-disk.html) providing a [convenient transport- and long-term storeability](https://www.youtube.com/watch?v=J1MN6O4dCCw) are commercially existing. 
 
 In short, the 3,5" form factor has a lot of desireable features for a removeable media, like being pretty much ["idiot-proof"](https://youtu.be/tJCMzdzh4Tw?t=149), acknowledging the [shortcomings of 5,25" FDDs](https://youtu.be/tJCMzdzh4Tw?t=228) and impoving upon them.
 
@@ -58,7 +61,7 @@ The following Types of NeoFloppy are specified:
   - Specifically for append-only archival media.
 - [ROM](https://en.wikipedia.org/wiki/Read-only_memory)
 - [RAM](https://en.wikipedia.org/wiki/RAM_drive#Dedicated_hardware_RAM_drives) / Voltaile Memory
-- Re-Writeable
+- Re-Writeable2000
   - These may be SSD and/or NVRAM-based and will combine the advantages of USB flashdrives, 2,5" SSDs and 3,5" FDDs without any disadvantages.
 - Cleaning Media
   - These don't contain any electrical contacts but are designed to clean the heads of drives.
@@ -233,7 +236,7 @@ RAM-based / voltaile media can employ a battery backup.
 
 Media Status:
 
-These Statuses indicate various statusses to be interpreted by the drive / media
+These pins indicate various statuses to be interpreted by the drive / media
 
 Status         | Set by | Comment
 ---------------|--------|---
@@ -245,20 +248,38 @@ WRITE_STOP     | Media  | Writing to the media should be stopped.
 WRITE_COMPLETE | Media  | All Data has been written to the medium.
 
 Insertion Sequence:
-1. Media is placed in the drive
-2. Drive detects PRSNT#-Pins are connected
-3. Media reports MEDIA_READY
-4. Drive checks configuration and enable pins and selects one of the available interfaces.
-5. Regular Drive Access
+1. Media is placed in the drive.
+2. Drive head is contacting the Media. 
+3. Drive detects PRSNT#-Pins are connected. 
+4. Drive provides power to voltage pins. 
+5. Media reports MEDIA_READY. 
+6. Drive checks configuration and enable pins and selects one of the available interfaces. 
+7. Regular Drive Access.
+
+NOTE:
+- Compliant Media must report MEDIA_READY within 1 second of having voltage applied to the contacts.
+  - This is to enshure reliable detection of faulty Media.
+- Compliant Media and Drives must complete the insertion sequence within 5 seconds.
+  - Meaning that within the 5 seconds the media must be inserted and available to the Host Operating System as a mountable device & filesystem.
+  - This is to enshure detection of faulty media and/or faulty drives.
 
 Ejection Sequence:
-1. Host / Drive sends EJECT_REQUEST to Media
-2. Media replies with WRITE_STOP [even on read-only media]
-3. Host confirms with READ_STOP [even on write-only media]
-4. Media confirms all actions complete with WRITE_COMPLETE [even on read-only media]
+1. Host / Drive sends EJECT_REQUEST to Media.
+2. Media replies with WRITE_STOP [even on read-only media].
+3. Host confirms with READ_STOP [even on write-only media].
+4. Media confirms all actions complete with WRITE_COMPLETE [even on read-only media].
 5. Once dismounted by the host, media confirms with EJECT_READY.
-6. The host can then safely eject the media.
-7. If a media is not ejected, it will remain in MEDIA_READY and can be initialzed again by the Host.
+6. The host can then safely eject the media by sending a command to the drive.
+7. The drive head will be retracted and thus disconnected.
+8. If a media is not ejected it can be reconnected without ejection. [like on an ODD]
+
+NOTE:
+- Compliant Media must complete the Ejection Sequence till EJECT_READY within 2 seconds.
+  - This is to enshure the graceful ejection.
+  - This sequence is allowed to fail if the Host Operating System still commences read/write access.
+    - Thus this is a safeguard to prevent data loss and system crashes in case the Operating System is running from said media.
+- Compliant Media and Drives must complete the ejection sequence within 5 seconds, unless failed.
+  - This is to detect faulty media and/or drives unless media and/or drives are still busy.
 
 ###### Configuration Pins
 Pins 0-7 are configureable
@@ -279,7 +300,7 @@ Pins 0-7 are configureable
 
 NOTE:
 - Not every drive and media supports all interfaces.
-  - The minimum viable media supports USB 3.1 Gen 2 only, tho such media is disrecommended.
+  - The minimum viable media supports USB 3.1 Gen 2 only, tho producing such media is discouraged.
 - It is recommended to support as many interface types as possible.
   - Implementation Freedom was given with the intent to allow for both cheap & low-bandwith as well as performance-oriented media.
     - SD for low-power embedded devices that may not support [booting from] USB.
@@ -291,7 +312,7 @@ NOTE:
 
 
 ##  Software & Data Layout
-####   Filesystems
+###   Filesystems
 As per definition as an Open-Source Format, compliant media can only e shipped with open-source licensed filesystems.
 - Since the NeoFloppy is low-level adressible, it is only discouraged as violation of specification, but not impossible to use any other filesystem one is capable to format it into.
 - Compliant Media thus will only be formatted from the factory with approved filesystems.
@@ -333,8 +354,8 @@ The following Filesystems are under consideration:
 - [APFS](https://en.wikipedia.org/wiki/Apple_File_System)
   - lack of support outside of Apple's ecosystem is hampering it.
 
-####   Media Encryption
-##### Supported Use
+###   Media Encryption
+#### Supported Use
 By default, all media should be transparently encryptable using [LUKS2](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup) / [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 - Alternatively, included encryption within said filesystems can be used.
   - This is supported in LTFS & OpenZFS from the get-go.
@@ -343,3 +364,72 @@ By default, all media should be transparently encryptable using [LUKS2](https://
 - The use of alternative encryption methods (regardless if Software like [VeraCrypt](https://en.wikipedia.org/wiki/VeraCrypt) or proprietary Hardware Standards like [OPAL](https://en.wikipedia.org/wiki/Opal_Storage_Specification)) is a violation of specification and thus not endorsed as only fully open-sourced encryption can be trusted.
   - The use of proprietary & non-FLOSS'd solutions like [BitLocker](https://en.wikipedia.org/wiki/BitLocker) is a [clear violation](https://en.wikipedia.org/wiki/BitLocker#Upholding_Kerckhoffs's_principle) of [basic principles](https://en.wikipedia.org/wiki/Kerckhoffs%27s_principle) in cryptography and should never be supported, but clearly discouraged.
 
+### Data Layout
+To enable maximum flexibility and future-proof design, the exact layout of the data is up to the used media.
+- A media should always apprear as one contigous blockdevice to the host, regardless of the underlying storage technology or media organization used.
+- The use of transparent error correction, wear leveling, reserve blocks and even redundancy with transparent RAID modi is recommended, but entirely optional.
+  - Media must detail these features in their datasheet.
+- Functionalities like ROM and WORM media must be implemented low-level and transparently, so that even faulty drives trying to [re-]write on them can't if that's not permitted.
+
+##  Drives
+### Functionality
+####  Mandatory Functions
+- Buttons
+  - "Pause" button [to initialize Ejection Sequence]
+  - "Eject" button [to mechanically remove media]
+  - Buttons may be absent on autoloaders and drives that provide support for these in Software.
+    - Compareable to motorized / software-controlled "auto eject" on Macintosh.
+- Status Indicators
+  - "Power" [drive is powered]
+    - This is only mandatory for external drives that aren't integrated into a system.
+  - "Media Inserted" [if a Media has been detected]
+    - This should blink fast if a faulty media has been inserted.
+    - This should blink slow if a cleaning or test media has been inserted.
+  - "Media Online" [if a media is currently connected via the drive head]
+    - This should blink to signal "Media Busy" [read/write access is commencing]
+  - These can be dedicaded or colour-changing LEDs or a small OLED showing a message.
+    - These may be absent on autoloaders and media libraries which should provide the functionality in Software and a dedicaded OLED/LCD status screen.
+- Interfaces
+  - USB 3.1 Gen 2
+    - This should utilize USB-C on external drives and the USB3 header on internal drives if a SATA/Molex/Floppy power connector is interated in the drive.
+      - Otherwise it must use USB-C header connection on internal drives.
+    - USB is mandatory to be supported by all drives and media.
+  - All other interfaces are optional, but implementation is highly recommended.
+    - SATA-6G
+      - Slimline-SATA connector is to be used if no additional power cable is to be run to it.
+        - An additional Adaptor cable for use with regular SATA-6G connectiors should be supplied in retail backages aimed at desktop setups.
+    - PCIe 2.0 and up 
+      - For a single PCIe Lane, a [Mini-]PCIe card and extension cable may be used.
+      - For up to two PCIe Lanes, A SATA Express Connector and Cable should be used.
+      - For up to four PCIe Lanes, A M.2 M-Key "Card" and SFF-8643 cable should be used.
+        - For external Drives, an SFF-8644 cable should be used.
+        - For up to eight PCIe Lanes, a PCIe card with two SFF-8643 cables should be used.
+          -  For external Drives, an SFF-8644 duplex/"8x" cable should be used.
+      - In all cases, a drive must also support and properly negotiate different numbers of lanes and versions on both ends.
+        - I.e. A PCIe 4.0 x8 media in a drive only connected via PCIe 2.0 x4 must negotiate PCIe 2.0 x4 speeds.
+        - I.e. A PCIe 5.0 x1 media in a drive only connected via PCIe 4.0 x4 must negotiate PCIe 4.0 x1 speeds.
+    - SD
+      - Drives can be internally connected directly to the SD bus, if available.
+        - Otherwise a USB 3.0 SD cardreader chip should be used.
+  - Multiple / Mixed Interfaces
+    - The drive should always negotiate the fastest possible interface supported by both the host and the media.
+      - A drive must also support not having all interfaces connected and thus should include DIP switches to skip unused/disconnected interfaces.
+    - A low-profile, half-lenght & passively cooled 'standalone' "reference controller card" supporting all interfaces will be offered.
+      - This reference controller card will be x16 electrically for ease of integration and providing dedicaded lanes for all interfaces supported.
+        - USB 3.1 Gen 2
+        - SATA-6G
+        - PCIe 4.0 x8
+        - SD
+      - "cost reduced" and simplified options using a lower number of lanes host-side are also possible.
+        - Manufacturers of drives and controllers must design their products so that they rely on the least amount of custom parts and cables possible.
+          - If a specific drive and/or controller can only be used in conjunction with each other, it must be prominently stated on the packaging, product information and specifications.
+            - Whilst such combinations may not be desireable in general and are severely discouraged, they may be necessary in certain embedded & rugged devices.
+    - Under all circumstances every media and drive will only use one interface type at the same time.
+      - Switching Interfaces without "soft-ejection" & reinitialization is not supported as of now.
+        - Doing so would require extensive support by both Operating Systems, Hardware, Software, Firmware and espechally Controller ICs on said media.
+          - It may however be supported in the future with specifically designated combinations of Hardware and Software.
+      - "Multipath" and "Multi-Host" support has to be provided by backplanes capable of doing so.
+        - This feature is to be seen as unsupported but not forbidden.
+    - A drive with multiple/mixed interfaces may also be discreetly connected as mentioned before.
+      - Thus it will appear as if a media has been plugged into the negotiated interface directly.
+        - This is done to enshure transparent compatibility between Operating Systems and Media.
