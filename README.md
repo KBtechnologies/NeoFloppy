@@ -26,6 +26,8 @@ Being able to passively conduct heat from a medium without compromising it's mec
 ### Why make it Open Source?
 All "Floppy Alternatives" mostly died out due to being "Single Vendor" and/or "Single Provider" products.
 
+For example the [iomega Zip Drive](https://en.wikipedia.org/wiki/Zip_drive) [suffered this fate](https://www.youtube.com/watch?v=1pBhEaMp8mw).
+
 Even the 3,5" 2880kB ED-Floppy suffered from this problem.
 
 Thus it is essential to enable everyone to support said media format form the get-go without any complex licensing negotiations via a rent-seeking licensing administration that doesn't provide any added value.

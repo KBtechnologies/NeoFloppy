@@ -1,11 +1,11 @@
 #   NeoFloppy
 ###  Specification
-####  Version 0.1
+####  Version 0.1.1a
 ###### NOTE: This is a "work in progress" draft and NOT a final specification!
 ###### Fundamental things may be changed without prior notice!
 This specification is open for development and request for comment.
 
-Comment and Suggestions are recommended to be submitted as issues.
+#### Comments and Suggestions are recommended to be submitted as issues.
 
 
 ## Goal
@@ -23,7 +23,7 @@ All common external media either suffer from certain issues:
 - having a very limited numer of connection cycles as per interface [i.e. 2,5" SSDs]
 - being a mechanical hazard being being able to break off their connectors and/or destroying the ports connected to if not damage the entire machine the port belongs to [i.e. USB flashdrives].
 - Conventional Harddrives are mechanically fragile and susceptible to damages due to user error, "gravity" magnetic fields, etc.
-  - It is evident that the [67 year old technology of HDDs](https://en.wikipedia.org/wiki/Hard_disk_drive) cannot long-term compete in terms of capacity growth and storage pricing with SSDs as already the technological limits are being reached using all tricks in the book like [SMR](https://en.wikipedia.org/wiki/Shingled_magnetic_recording) and using [Helium](https://en.wikipedia.org/wiki/Helium#Conservation_advocates) for cooling, which is a very finite resource.
+  - It is evident that the [over 65 years old technology of HDDs](https://en.wikipedia.org/wiki/Hard_disk_drive) cannot long-term compete in terms of capacity growth and storage pricing with SSDs as already the technological limits are being reached using all tricks in the book like [SMR](https://en.wikipedia.org/wiki/Shingled_magnetic_recording) and using [Helium](https://en.wikipedia.org/wiki/Helium#Conservation_advocates) for cooling, which is a very finite resource.
   - Hard drives already are way too power consuming for more and more applications and thus will likely go the way of [QIC Tapes](https://en.wikipedia.org/wiki/Quarter-inch_cartridge) as their shortcomings make them more and more unjustifyable for mass-market use by [SOHO](https://en.wikipedia.org/wiki/Small_office/home_office) customers.
 
 ####  Handling
@@ -48,7 +48,7 @@ OFC it would be trivial to find even smaller form factors like [EDSFF](https://e
 - Modern, high-speed & high density flash media can become [very toasty](https://www.youtube.com/watch?v=lQmI5A27Iv8), resulting in a lower lifespan.
   - The 3,5" form factor provides ample of surface area to allow for sufficient passive cooling [like metal-encased 2,5" SSDs] whilst not contributing to excessive device "thiccness".
 - Existing tooling, standards and a known form factor make tooling up for such a media format relatively easy.
-  - Even additional casings like a [Jewelcase](https://memorypack.com.tw/floppy-disk.html) providing a [convenient transport- and long-term storeability](https://www.youtube.com/watch?v=J1MN6O4dCCw) are commercially existing. 
+  - Even additional casings like a [Jewelcase](https://memorypack.com.tw/floppy-disk.html) providing a [convenient transport and long-term storeability](https://www.youtube.com/watch?v=J1MN6O4dCCw) are commercially existing. 
 
 In short, the 3,5" form factor has a lot of desireable features for a removeable media, like being pretty much ["idiot-proof"](https://youtu.be/tJCMzdzh4Tw?t=149), acknowledging the [shortcomings of 5,25" FDDs](https://youtu.be/tJCMzdzh4Tw?t=228) and impoving upon them.
 
@@ -61,12 +61,12 @@ The following Types of NeoFloppy are specified:
   - Specifically for append-only archival media.
 - [ROM](https://en.wikipedia.org/wiki/Read-only_memory)
 - [RAM](https://en.wikipedia.org/wiki/RAM_drive#Dedicated_hardware_RAM_drives) / Voltaile Memory
-- Re-Writeable2000
+- Re-Writeable
   - These may be SSD and/or NVRAM-based and will combine the advantages of USB flashdrives, 2,5" SSDs and 3,5" FDDs without any disadvantages.
 - Cleaning Media
   - These don't contain any electrical contacts but are designed to clean the heads of drives.
   - A subsequent "cleaning drive" to clean media is also planned, tho unless physical damage has been exerted onto the media, it should be easily cleanable with 99% isopropylic alcohol and a non-static & fine-tipped sponge-swab.
-    - Rare cases of severly gunked-up disks and/or drives will like "Kontakt Chemie LR PCC" or similar Printed Circuit Board Cleaner if not ultrasonic cleaning.
+    - Rare cases of severly gunked-up disks and/or drives will be cleaned by [Kontakt Chemie LR PCC](http://www.kontaktchemie.com/KOC/KOCproductdetailV2.csp?product=KONTAKT%20PCC) or similar Printed Circuit Board Cleaner if not ultrasonic cleaning.
   - The need for any cleaning should be negligible [1x each 5-10 years] per drives and non-zero for media given they get handled properly as per manufacturer specification.
 
 ##  Mechanical Dimensions
@@ -293,6 +293,7 @@ Pins 0-7 are configureable
 
 #5 | #6 | #7 | Lanes
 ---|----|----|---
+ 0 | 0  | 0  | 0
  1 | 0  | 0  | 1
  1 | 1  | 0  | 2
  1 | 0  | 1  | 4
@@ -400,9 +401,12 @@ To enable maximum flexibility and future-proof design, the exact layout of the d
         - An additional Adaptor cable for use with regular SATA-6G connectiors should be supplied in retail backages aimed at desktop setups.
     - PCIe 2.0 and up 
       - For a single PCIe Lane, a [Mini-]PCIe card and extension cable may be used.
+        - For external Drives, an ExpressCard/34 connector should be used.
       - For up to two PCIe Lanes, A SATA Express Connector and Cable should be used.
+        - For external drives, a Thunderbolt3/USB4 connector & Controller should be used.
       - For up to four PCIe Lanes, A M.2 M-Key "Card" and SFF-8643 cable should be used.
         - For external Drives, an SFF-8644 cable should be used.
+          - Optionally, a Thunderbolt3/USB4 connector & Controller can be used in addition.
         - For up to eight PCIe Lanes, a PCIe card with two SFF-8643 cables should be used.
           -  For external Drives, an SFF-8644 duplex/"8x" cable should be used.
       - In all cases, a drive must also support and properly negotiate different numbers of lanes and versions on both ends.
@@ -411,10 +415,13 @@ To enable maximum flexibility and future-proof design, the exact layout of the d
     - SD
       - Drives can be internally connected directly to the SD bus, if available.
         - Otherwise a USB 3.0 SD cardreader chip should be used.
+      - This solely uses the original SD Card bus, tho operates as an SDUC card.
+        - SD Express won't be supported
+        - UHS-II may be supported in future versions.
   - Multiple / Mixed Interfaces
     - The drive should always negotiate the fastest possible interface supported by both the host and the media.
       - A drive must also support not having all interfaces connected and thus should include DIP switches to skip unused/disconnected interfaces.
-    - A low-profile, half-lenght & passively cooled 'standalone' "reference controller card" supporting all interfaces will be offered.
+    - A low-profile, half-lenght & passively cooled 'standalone' "reference controller card" supporting all interfaces is planned.
       - This reference controller card will be x16 electrically for ease of integration and providing dedicaded lanes for all interfaces supported.
         - USB 3.1 Gen 2
         - SATA-6G
@@ -430,6 +437,7 @@ To enable maximum flexibility and future-proof design, the exact layout of the d
           - It may however be supported in the future with specifically designated combinations of Hardware and Software.
       - "Multipath" and "Multi-Host" support has to be provided by backplanes capable of doing so.
         - This feature is to be seen as unsupported but not forbidden.
+          - Future versions may allow said feature, but it'll remain optional for drives and media.
     - A drive with multiple/mixed interfaces may also be discreetly connected as mentioned before.
       - Thus it will appear as if a media has been plugged into the negotiated interface directly.
         - This is done to enshure transparent compatibility between Operating Systems and Media.
