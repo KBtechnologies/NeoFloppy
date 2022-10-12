@@ -49,6 +49,7 @@ OFC it would be trivial to find even smaller form factors like [EDSFF](https://e
   - The 3,5" form factor provides ample of surface area to allow for sufficient passive cooling [like metal-encased 2,5" SSDs] whilst not contributing to excessive device "thiccness".
 - Existing tooling, standards and a known form factor make tooling up for such a media format relatively easy.
   - Even additional casings like a [Jewelcase](https://memorypack.com.tw/floppy-disk.html) providing a [convenient transport and long-term storeability](https://www.youtube.com/watch?v=J1MN6O4dCCw) are commercially existing. 
+- Not only does the form factor of the [iomega Zip Disk](https://en.wikipedia.org/wiki/Zip_drive) lack many of these cost-saving advantages - mostly due to their single-vendor approach to drives, but also lack of benefits beyond "thiccer casing".
 
 In short, the 3,5" form factor has a lot of desireable features for a removeable media, like being pretty much ["idiot-proof"](https://youtu.be/tJCMzdzh4Tw?t=149), acknowledging the [shortcomings of 5,25" FDDs](https://youtu.be/tJCMzdzh4Tw?t=228) and impoving upon them.
 
@@ -59,8 +60,15 @@ The [core advantages of the 3,5" FDDs](https://youtu.be/tJCMzdzh4Tw?t=254) are t
 The following Types of NeoFloppy are specified:
 - [WORM](https://en.wikipedia.org/wiki/Write_once_read_many)
   - Specifically for append-only archival media.
+    - No, you don't need blockchain for that!
 - [ROM](https://en.wikipedia.org/wiki/Read-only_memory)
+  - Which may be interesting not only for commercially sold media and applications, but also for persistent and secure embedded systems designed to be airgapped.
+    - I.e. industrial automation and critical infrastructure.
 - [RAM](https://en.wikipedia.org/wiki/RAM_drive#Dedicated_hardware_RAM_drives) / Voltaile Memory
+  - These may be useful for fast IOPS storage [i.e. scratchdisks] where the longevity is more important than the price per capacity.
+    - I.e. Video recording and Movie editing applications.
+  - RAM media must have a transparent refresh circuitry and toolfree swappable & rechargeable batteries/capacitors configured for redundancy.
+  - They should also employ ECC and explicitly designate if they don't do so.
 - Re-Writeable
   - These may be SSD and/or NVRAM-based and will combine the advantages of USB flashdrives, 2,5" SSDs and 3,5" FDDs without any disadvantages.
 - Cleaning Media
