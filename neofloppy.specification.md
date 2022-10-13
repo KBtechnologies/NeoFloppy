@@ -24,7 +24,11 @@ All common external media either suffer from certain issues:
 - being a mechanical hazard being being able to break off their connectors and/or destroying the ports connected to if not damage the entire machine the port belongs to [i.e. USB flashdrives].
 - Conventional Harddrives are mechanically fragile and susceptible to damages due to user error, "gravity" magnetic fields, etc.
   - It is evident that the [over 65 years old technology of HDDs](https://en.wikipedia.org/wiki/Hard_disk_drive) cannot long-term compete in terms of capacity growth and storage pricing with SSDs as already the technological limits are being reached using all tricks in the book like [SMR](https://en.wikipedia.org/wiki/Shingled_magnetic_recording) and using [Helium](https://en.wikipedia.org/wiki/Helium#Conservation_advocates) for cooling, which is a very finite resource.
-  - Hard drives already are way too power consuming for more and more applications and thus will likely go the way of [QIC Tapes](https://en.wikipedia.org/wiki/Quarter-inch_cartridge) as their shortcomings make them more and more unjustifyable for mass-market use by [SOHO](https://en.wikipedia.org/wiki/Small_office/home_office) customers.
+  - Hard drives already are way too power consuming for more and more applications and thus will likely go the way of [QIC Tapes](https://en.wikipedia.org/wiki/Quarter-inch_cartridge) as their shortcomings make them more and more unjustifyable for mass-market use by [SOHO](https://en.wikipedia.org/wiki/Small_office/home_office) customer.
+  - External Hard-Drive Systems always suffer from scalability issues, quickly killing any monetary advantage and making media and drives horribly obsolete, as many companies and products have shown:
+    - All of [SyQuest](https://en.wikipedia.org/wiki/SyQuest_Technology)'s products
+    - [Castlewood Orb Drive](https://en.wikipedia.org/wiki/Castlewood_Orb_Drive)
+    - [iomega Jaz](https://en.wikipedia.org/wiki/Jaz_drive) & [iomega Rev](https://en.wikipedia.org/wiki/REV_(disk))
 
 ####  Handling
 All common external media have serious handing deficits stemming from lack of standardization.
