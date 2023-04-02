@@ -29,6 +29,7 @@ All common external media either suffer from certain issues:
     - All of [SyQuest](https://en.wikipedia.org/wiki/SyQuest_Technology)'s products
     - [Castlewood Orb Drive](https://en.wikipedia.org/wiki/Castlewood_Orb_Drive)
     - [iomega Jaz](https://en.wikipedia.org/wiki/Jaz_drive) & [iomega Rev](https://en.wikipedia.org/wiki/REV_(disk))
+    - [RDX](https://en.wikipedia.org/wiki/RDX_Technology) (which are basically just overpriced HDDs & SSDs inside a fancy cartridge) 
 
 ####  Handling
 All common external media have serious handing deficits stemming from lack of standardization.
