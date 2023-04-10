@@ -1,6 +1,6 @@
 #   NeoFloppy
 ###  Specification
-####  Version 0.1.1a
+####  Version 0.1.sa
 ###### NOTE: This is a "work in progress" draft and NOT a final specification!
 ###### Fundamental things may be changed without prior notice!
 This specification is open for development and request for comment.
@@ -180,7 +180,7 @@ Aside from the contact window area and subsequent pinouts, the PCBs can be freel
 
 ##  Electrical Standards
 Utilizing the benefits of the 3,5" FDD mechanical form factor - including the shutter as a base, the NeoFloppy media uses [LGA](https://en.wikipedia.org/wiki/Land_grid_array) as means for the media to electromechanically connect to the host system.
-- Instead of a read/write head that moves along a classic floppy media, the head consists of an LGA "Socket" that only moves vertically to [dis-]connect electrically.
+- Instead of a read/write head that moves along a classic floppy media, the head consists of an LGA "Socket" with it's spring-loaded micro-pins [similar to pogo-pins] that only moves vertically to [dis-]connect electrically.
 - Unlike SATA, SAS, U.2 and other internal drive connectors, this is intended to last > 10.000 cycles.
 
 ### Head Window
@@ -373,7 +373,7 @@ The following Filesystems are under consideration:
 #### Supported Use
 By default, all media should be transparently encryptable using [LUKS2](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup) / [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 - Alternatively, included encryption within said filesystems can be used.
-  - This is supported in LTFS & OpenZFS from the get-go.
+  - This is supported in LTFS & OpenZFS as per their specification.
 
 ##### Important Note
 - The use of alternative encryption methods (regardless if Software like [VeraCrypt](https://en.wikipedia.org/wiki/VeraCrypt) or proprietary Hardware Standards like [OPAL](https://en.wikipedia.org/wiki/Opal_Storage_Specification)) is a violation of specification and thus not endorsed as only fully open-sourced encryption can be trusted.
@@ -412,7 +412,7 @@ To enable maximum flexibility and future-proof design, the exact layout of the d
   - All other interfaces are optional, but implementation is highly recommended.
     - SATA-6G
       - Slimline-SATA connector is to be used if no additional power cable is to be run to it.
-        - An additional Adaptor cable for use with regular SATA-6G connectiors should be supplied in retail backages aimed at desktop setups.
+        - An additional Adaptor cable for use with regular SATA-6G connectiors should be supplied in retail packages aimed at desktop setups.
     - PCIe 2.0 and up 
       - For a single PCIe Lane, a [Mini-]PCIe card and extension cable may be used.
         - For external Drives, an ExpressCard/34 connector should be used.
