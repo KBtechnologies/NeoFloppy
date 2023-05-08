@@ -1,6 +1,6 @@
 #   NeoFloppy
 ###  Specification
-####  Version 0.1.sa
+####  Version 0.1.3a
 ###### NOTE: This is a "work in progress" draft and NOT a final specification!
 ###### Fundamental things may be changed without prior notice!
 This specification is open for development and request for comment.
@@ -89,7 +89,7 @@ Unless specified otherwise, the media should follow the [ECMA-125](https://www.e
 Overall:    93,7 x 90,0 x 3,3 mm.
 - Identical with 3,5" FDDs
   - Spindle in the middle is not existing - instead it's bottom side is flat and used to place the back label on
-  - Holes identical to 1.440kB FDD
+  - Holes identical to 2.880kB FDD
     - Including Write-protect hole/switch
       - Write protect must be respected by the drive AND also be enforced by the media
       - Write Protect switch must be electrically integrated into the controller of the media.
