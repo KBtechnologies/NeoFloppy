@@ -1,7 +1,7 @@
 #   NeoFloppy
 A new storage media format using modern interfaces.
 
-[You can find the specification here.](neofloppy.specification.md)
+[You can find the specification here.](docs/neofloppy.specification.md)
 
 ##  What & Why
 ### What does the NeoFloppy not do?
