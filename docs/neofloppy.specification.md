@@ -26,7 +26,7 @@ All common external media either suffer from certain issues:
   - It is evident that the [over 65 years old technology of HDDs](https://en.wikipedia.org/wiki/Hard_disk_drive) cannot long-term compete in terms of capacity growth and storage pricing with SSDs as already the technological limits are being reached using all tricks in the book like [SMR](https://en.wikipedia.org/wiki/Shingled_magnetic_recording) and using [Helium](https://en.wikipedia.org/wiki/Helium#Conservation_advocates) for cooling, which is a very finite resource.
   - Hard drives already are way too power consuming for more and more applications and thus will likely go the way of [QIC Tapes](https://en.wikipedia.org/wiki/Quarter-inch_cartridge) as their shortcomings make them more and more unjustifyable for mass-market use by [SOHO](https://en.wikipedia.org/wiki/Small_office/home_office) customer.
   - External Hard-Drive Systems always suffer from scalability issues, quickly killing any monetary advantage and making media and drives horribly obsolete, as many companies and products have shown:
-    - All of [SyQuest](https://en.wikipedia.org/wiki/SyQuest_Technology)'s products
+    - All of [SyQuest](https://en.wikipedia.org/wiki/SyQuest_Technology)'s products [which failed due to lack of roadmap and innovation](https://www.youtube.com/watch?v=211-eHVkqeo).
     - [Castlewood Orb Drive](https://en.wikipedia.org/wiki/Castlewood_Orb_Drive)
     - [iomega Jaz](https://en.wikipedia.org/wiki/Jaz_drive) & [iomega Rev](https://en.wikipedia.org/wiki/REV_(disk))
     - [RDX](https://en.wikipedia.org/wiki/RDX_Technology) (which are basically just overpriced HDDs & SSDs inside a fancy cartridge) 
