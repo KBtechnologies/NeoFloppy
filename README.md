@@ -8,6 +8,7 @@ A new storage media format using modern interfaces.
 The NeoFloppy isn't an actual floppy, but rather a "stiffy disk":
 
 It's NOT an actual magnetic film medium like the 3,5" FDD, ZIP, LS- HiFD and other "Floppy" formats.
+- Including the [MemoryStick Floppy Adapter](https://www.youtube.com/watch?v=dhGl30Ll4vA) made by Sony.
 
 ### What is the NeoFloppy instead?
 The NeoFloppy is an non-mechanical / solid-state media format optimized for handling, transport, storage, archive and subsequent use.

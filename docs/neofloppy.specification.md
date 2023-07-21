@@ -111,6 +111,7 @@ This is divided up by the following parameters:
   - it is recommended to use one consistent "over the corner" label!
     - This allows for easy integration of the "rear label" which is the 1D-Barcode with the unique serial number and manufacturer prefix.
       - Similar to [LTO Ultrium](https://en.wikipedia.org/wiki/Linear_Tape-Open#Labels), [Sony AIT](https://en.wikipedia.org/wiki/Advanced_Intelligent_Tape) and [IBM 3592](https://en.wikipedia.org/wiki/IBM_3592) tape cartridges.
+      - An Example can be found [here](docs/images/128bit_code128-example.gif)
   - Top label: includes rewriteable NFC Tag [13,56 MHz - i.e. using NTAG215]
     - Designed for media identification
       - Can be re-labeled within the drive [optional]
