@@ -47,7 +47,7 @@ OFC it would be trivial to find even smaller form factors like [EDSFF](https://e
   - This is the case with basically almost all media on the market as of today that ain't so old that any patents have long lapsed.
     - The 3,5" FDD form factor certainly is one of those legacy formats.
 - The form factor has several key advantages as stated before, and aside from [Fuzzy Warm Retro Feelings](https://www.youtube.com/watch?v=8IZcP0oP0OU), conversions of 3,5" media and drives using [SD Cards](https://en.wikipedia.org/wiki/SD_card) are [common](https://www.youtube.com/watch?v=gNQYbSWBhAs) and [well-documented](https://www.youtube.com/watch?v=GOdIeka3-SI).
-  - Sadly these are usually hand-fitted and not interchangeable in any way or form.
+  - Sadly these are usually [hand-fitted](https://www.youtube.com/watch?v=END_PVp3Eds) and not interchangeable in any way or form.
   - Also The SD Interface doesn't lend itself for use-cases replacing SSDs so [SD Express](https://en.wikipedia.org/wiki/SD_card#SD_Express) basically implements [NVMe](https://en.wikipedia.org/wiki/NVM_Express) and thus [PCIe](https://en.wikipedia.org/wiki/PCI_Express).
     - Native PCIe support might be more useful.
 - Modern, high-speed & high density flash media can become [very toasty](https://www.youtube.com/watch?v=lQmI5A27Iv8), resulting in a lower lifespan.
